@@ -40,6 +40,9 @@ INSTALLED_APPS = [
 
     # My apps
     'pages',
+    'blogs',
+    'products',
+
 
 ]
 
