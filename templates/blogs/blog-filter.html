@@ -1,0 +1,68 @@
+{% load static %}
+<div class="sidebar-3 sidebar-collection col-lg-3 col-md-3 col-sm-4">
+
+                                        <!-- category -->
+                                        <div class="sidebar-block">
+                                            <div class="title-block">Categories</div>
+                                            <div class="block-content">
+                                                {% for cat in categories %}
+                                                <div class="cateTitle hasSubCategory open level1">
+                                                    <a class="cateItem" href="?cat={{ cat.id }}">{{ cat.name }}</a>
+                                                </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+
+                                        <!-- recent posts -->
+                                        <div class="sidebar-block">
+                                            <div class="title-block">Recent Posts</div>
+                                            <div class="post-item-content">
+                                                {% for blog in famous_blogs %}
+                                                <div>
+                                                    <div class="late-item first-child">
+                                                        <a href="{% url 'blogs:detail' pk=blog.id %}">
+                                                            <p class="content-title">{{ blog.title }}</p>
+                                                        </a>
+                                                        <span>
+                                                            <i class="zmdi zmdi-comments"></i>13 comment
+                                                        </span>
+                                                        <span>
+                                                            <i class="zmdi zmdi-calendar-note"></i>{{ blog.created_at }}
+                                                        </span>
+                                                        <p class="description">{{ blog.short_info }}
+                                                        </p>
+                                                        <p class="remove">
+                                                            <a href="{% url 'blogs:detail' pk=blog.id %}">READ MORE</a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+
+                                        <!-- product tag -->
+                                        <div class="sidebar-block product-tags">
+                                            <div class="title-block">
+                                                Blog Tags
+                                            </div>
+                                            <div class="block-content">
+                                                <ul class="listSidebarBlog list-unstyled">
+                                                    {% for tag in tags %}
+                                                    <li>
+                                                        <a href="#" title="Show products matching tag Hot Trend">{{ tag.name }}</a>
+                                                    </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <!-- advertising -->
+                                        <div class="sidebar-block group-image-special">
+                                            <div class="effect">
+                                                <a href="#">
+                                                    <img class="img-fluid" src="{% static 'img/blog/advertising.jpg' %}" alt="banner-2" title="banner-2">
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                    </div>
