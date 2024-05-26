@@ -71,7 +71,7 @@
                                                 </li>
                                                 {% endif %}
                                                 {% for page in page_obj.paginator.page_range %}
-                                                <li class="current active">
+                                                <li {% if forloop.counter == 1%}class="current active" {% endif %}>
                                                     <a rel="nofollow" href="#" class="disabled js-search-link">
                                                         {{ page }}
                                                     </a>
