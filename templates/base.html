@@ -43,12 +43,14 @@
 <body
         {% if '/blogs/' == request.path %}
         id="blog-list-sidebar-left" class="blog"
-        {% elif 'products' in request.path %}
+        {% elif 'products' == request.path %}
         id="product-sidebar-left" class="product-grid-sidebar-left"
         {% elif 'contact' in request.path %}
         id="contact" class="Blog"
         {% elif 'blogs/detail/' in request.path %}
         id="blog-detail" class="blog"
+        {% elif 'products/detail/' in request.path %}
+        id="product-detail"
         {% endif %}
 >
     {% include 'layouts/header-base.html' %}

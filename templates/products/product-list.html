@@ -184,78 +184,18 @@
                                             <div class="new-item-content">
                                                 <h3 class="title-product">categories</h3>
                                                 <ul class="scroll-product">
+                                                    {% for cat in categories %}
                                                     <li>
                                                         <label class="check">
                                                             <input type="checkbox">
                                                             <span class="checkmark"></span>
                                                         </label>
                                                         <a href="#">
-                                                            <b>side table</b>
-                                                            <span class="quantity">(30)</span>
+                                                            <b>{{ cat.name }}</b>
+                                                            <span class="quantity">({{ cat.products.count }})</span>
                                                         </a>
                                                     </li>
-                                                    <li>
-                                                        <label class="check">
-                                                            <input type="checkbox">
-                                                            <span class="checkmark"></span>
-                                                        </label>
-                                                        <a href="#">
-                                                            <b>floor lamp</b>
-                                                            <span class="quantity">(32)</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <label class="check">
-                                                            <input type="checkbox">
-                                                            <span class="checkmark"></span>
-                                                        </label>
-                                                        <a href="#">
-                                                            <b>ottoman</b>
-                                                            <span class="quantity">(67)</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <label class="check">
-                                                            <input type="checkbox">
-                                                            <span class="checkmark"></span>
-                                                        </label>
-                                                        <a href="#">
-                                                            <b>armchair</b>
-                                                            <span class="quantity">(15)</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <label class="check">
-                                                            <input type="checkbox">
-                                                            <span class="checkmark"></span>
-                                                        </label>
-                                                        <a href="#">
-                                                            <b>ottoman</b>
-                                                            <span class="quantity">(24)</span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <label class="check">
-                                                            <input type="checkbox">
-                                                            <span class="checkmark"></span>
-                                                        </label>
-                                                        <a href="#">
-                                                            <b>CUSHION</b>
-                                                            <span class="quantity">(20)</span>
-
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <label class="check">
-                                                            <input type="checkbox">
-                                                            <span class="checkmark"></span>
-                                                        </label>
-                                                        <a href="#">
-                                                            <b>Pineapple</b>
-                                                            <span class="quantity">(21)</span>
-                                                        </a>
-                                                    </li>
+                                                    {% endfor %}
                                                 </ul>
                                             </div>
                                             <div class="new-item-content">
@@ -512,7 +452,7 @@
                                                     <div class="item text-center col-md-4">
                                                         <div class="product-miniature js-product-miniature item-one first-item">
                                                             <div class="thumbnail-container border">
-                                                                <a href="product-detail.html">
+                                                                <a href="{% url 'products:detail' pk=product.id %}">
                                                                     <img class="img-fluid image-cover" src="{{ product.image1.url }}" alt="img">
                                                                     <img class="img-fluid image-secondary" src="{{ product.image2.url }}" alt="img">
                                                                 </a>
@@ -527,7 +467,7 @@
                                                             <div class="product-description">
                                                                 <div class="product-groups">
                                                                     <div class="product-title">
-                                                                        <a href="product-detail.html">{{ product.name }}</a>
+                                                                        <a href="{% url 'products:detail' pk=product.id %}">{{ product.name }}</a>
                                                                     </div>
                                                                     <div class="rating">
                                                                         <div class="star-content">
