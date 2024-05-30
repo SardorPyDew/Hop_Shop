@@ -43,7 +43,7 @@
 <body
         {% if '/blogs/' == request.path %}
         id="blog-list-sidebar-left" class="blog"
-        {% elif 'products' == request.path %}
+        {% elif '/products/' == request.path %}
         id="product-sidebar-left" class="product-grid-sidebar-left"
         {% elif 'contact' in request.path %}
         id="contact" class="Blog"

@@ -101,6 +101,9 @@ class ProductModel(models.Model):
     def is_discount(self):
         return self.discount != 0
 
+    def is_available(self):
+        return self.count != 0
+
     def get_price(self):
         if self.is_discount():
             return self.price - self.discount * self.price / 100
