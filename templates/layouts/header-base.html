@@ -145,31 +145,31 @@
                                 <div class="account-list-content">
 
                                     <div>
-                                        <a class="login" href="user-acount.html" rel="nofollow" title="Log in to your customer account">
+                                        <a class="login" href="{% url 'users:account' %}" rel="nofollow" title="Log in to your customer account">
                                             <i class="fa fa-cog"></i>
                                             <span>My Account</span>
                                         </a>
                                     </div>
                                     <div>
-                                        <a class="login" href="user-login.html" rel="nofollow" title="Log in to your customer account">
+                                        <a class="login" href="{% url 'users:login' %}" rel="nofollow" title="Log in to your customer account">
                                             <i class="fa fa-sign-in"></i>
                                             <span>Sign in</span>
                                         </a>
                                     </div>
                                     <div>
-                                        <a class="register" href="user-register.html" rel="nofollow" title="Register Account">
+                                        <a class="register" href="{% url 'users:register' %}" rel="nofollow" title="Register Account">
                                             <i class="fa fa-user"></i>
                                             <span>Register Account</span>
                                         </a>
                                     </div>
                                     <div>
-                                        <a class="check-out" href="product-checkout.html" rel="nofollow" title="Checkout">
+                                        <a class="check-out" href="{% url 'users:checkout' %}" rel="nofollow" title="Checkout">
                                             <i class="fa fa-check" aria-hidden="true"></i>
                                             <span>Checkout</span>
                                         </a>
                                     </div>
                                     <div class="link_wishlist">
-                                        <a href="user-wishlist.html" title="My Wishlists">
+                                        <a href="{% url 'users:wishlist' %}" title="My Wishlists">
                                             <i class="fa fa-heart"></i>
                                             <span>My Wishlists</span>
                                         </a>

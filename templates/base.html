@@ -42,15 +42,29 @@
 
 <body
         {% if '/blogs/' == request.path %}
-        id="blog-list-sidebar-left" class="blog"
+            id="blog-list-sidebar-left" class="blog"
         {% elif '/products/' == request.path %}
-        id="product-sidebar-left" class="product-grid-sidebar-left"
+            id="product-sidebar-left" class="product-grid-sidebar-left"
         {% elif 'contact' in request.path %}
-        id="contact" class="Blog"
+            id="contact" class="Blog"
         {% elif 'blogs/detail/' in request.path %}
-        id="blog-detail" class="blog"
+            id="blog-detail" class="blog"
         {% elif 'products/detail/' in request.path %}
-        id="product-detail"
+            id="product-detail"
+        {% elif '/users/account/' == request.path %}
+            class="user-acount"
+        {% elif '/users/wishlist/' == request.path %}
+            class="user-wishlist blog"
+        {% elif '/users/checkout/' == request.path %}
+            class="product-checkout checkout-cart"
+        {% elif '/users/register' == request.path %}
+            class="user-register blog"
+        {% elif '/users/login/' == request.path %}
+            class="user-login blog"
+        {% elif '/users/reset/password/' == request.path %}
+            class="user-reset-password blog"
+        {% elif '/users/cart/' == request.path %}
+            class="product-cart checkout-cart blog"
         {% endif %}
 >
     {% include 'layouts/header-base.html' %}

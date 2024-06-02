@@ -108,6 +108,9 @@ class ProductModel(models.Model):
         if self.is_discount():
             return self.price - self.discount * self.price / 100
 
+    def get_related_products(self):
+        return ProductModel.objects.filter(categories=self.categories).exclude(pk=self.pk)[:3]
+
     class Meta:
         verbose_name = 'Product'
         verbose_name_plural = 'Products'

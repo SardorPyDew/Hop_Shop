@@ -26,6 +26,7 @@ urlpatterns = [
     path('', include('pages.urls', namespace='pages')),
     path('blogs/', include('blogs.urls', namespace='blogs')),
     path('products/', include('products.urls', namespace='products')),
+    path('users/', include('users.urls', namespace='users')),
 
 ]
 
