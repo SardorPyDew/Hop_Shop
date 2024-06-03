@@ -57,7 +57,9 @@
             class="user-wishlist blog"
         {% elif '/users/checkout/' == request.path %}
             class="product-checkout checkout-cart"
-        {% elif '/users/register' == request.path %}
+        {% elif '/users/register/' == request.path %}
+            class="user-register blog"
+        {% elif '/users/verify/email/' == request.path %}
             class="user-register blog"
         {% elif '/users/login/' == request.path %}
             class="user-login blog"

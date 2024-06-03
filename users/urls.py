@@ -11,4 +11,6 @@ urlpatterns = [
     path('wishlist/', WishlistView.as_view(), name='wishlist'),
     path('cart/', CartView.as_view(), name='cart'),
     path('checkout/', CheckoutView.as_view(), name='checkout'),
+    path('verify/email/', verify_email, name='verify-email'),
+    
 ]
