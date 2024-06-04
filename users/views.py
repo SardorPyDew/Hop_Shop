@@ -1,15 +1,19 @@
+import datetime
 import random
+import pytz
 
-from django.core.checks import messages
+from django.contrib import messages
+from django.contrib.auth import get_user_model
 from django.core.mail import send_mail
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, CreateView
 
 from conf import settings
-from users.forms import RegisterForm
+from users.forms import RegisterForm, EmailVerificationForm
 from users.models import VerificationCodeModel
 
+UserModel = get_user_model()
 
 def send_email_verifivcation(user):
     random_code = random.randint(100000, 999999)
@@ -47,12 +51,34 @@ class RegisterView(CreateView):
         return super().form_valid(form)
 
     def form_invalid(self, form):
+        storange = messages.get_messages(self.request)
+        storange.used = True
         messages.error(self.request, form.errors)
         print(self.get_context_data(form=form))
         return self.render_to_response(self.get_context_data(form=form))
 
 
 def verify_email(request):
+    if request.method == 'POST':
+        form = EmailVerificationForm(request.POST)
+        if form.is_valid():
+            code = form.cleaned_data['code']
+            user_code = VerificationCodeModel.objects.filter(code=code).first()
+            if user_code:
+                now = datetime.now(pytz.timezone(settings.TIME_ZONE))
+                sent_time = user_code.created_at.astimezone(pytz.timezone(settings.TIME_ZONE)) + datetime.timedelta(minutes=2)
+                if sent_time > now:
+                    UserModel.objects.filter(pk=user_code.user.pk).update(is_active=True)
+                    return redirect(reverse_lazy('user:login'))
+                else:
+                    messages.error(request, 'Verification code expired.')
+
+            else:
+                messages.error(request, 'This code is invalid')
+
+
+        else:
+            messages.error(request, form.errors)
     return render(request, 'users/verify-email.html')
 
 
