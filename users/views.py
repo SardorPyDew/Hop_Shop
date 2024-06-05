@@ -3,17 +3,18 @@ import random
 import pytz
 
 from django.contrib import messages
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, authenticate, login, logout
 from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView, CreateView
+from django.views.generic import TemplateView, CreateView, FormView
 
 from conf import settings
-from users.forms import RegisterForm, EmailVerificationForm
+from users.forms import RegisterForm, EmailVerificationForm, LoginForm
 from users.models import VerificationCodeModel
 
 UserModel = get_user_model()
+
 
 def send_email_verifivcation(user):
     random_code = random.randint(100000, 999999)
@@ -51,8 +52,8 @@ class RegisterView(CreateView):
         return super().form_valid(form)
 
     def form_invalid(self, form):
-        storange = messages.get_messages(self.request)
-        storange.used = True
+        storage = messages.get_messages(self.request)
+        storage.used = True
         messages.error(self.request, form.errors)
         print(self.get_context_data(form=form))
         return self.render_to_response(self.get_context_data(form=form))
@@ -82,8 +83,33 @@ def verify_email(request):
     return render(request, 'users/verify-email.html')
 
 
-class LoginView(TemplateView):
+class LoginView(FormView):
     template_name = 'users/login.html'
+    form_class = LoginForm
+    success_url = reverse_lazy('pages:home')
+
+    def form_valid(self, form):
+        username = form.cleaned_data['username']
+        password = form.cleaned_data['password']
+
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            login(self.request, user)
+            return redirect(self.success_url)
+        else:
+            messages.error(self.request, 'Invalid username or password')
+
+    def form_invalid(self, form):
+        storage = messages.get_messages(self.request)
+        storage.used = True
+        messages.error(self.request, 'Form is invalid')
+        return self.render_to_response(self.get_context_data(form=form))
+
+
+def logout_view(request):
+    if request.method == 'GET':
+        logout(request)
+        return redirect('pages:home')
 
 
 class WishlistView(TemplateView):
