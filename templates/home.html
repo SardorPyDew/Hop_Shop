@@ -1990,82 +1990,24 @@
                                     <div class="col-lg-12 col-md-12">
                                         <div class="block">
                                             <div class="owl-carousel owl-theme testimonial-type-home3">
-                                                <div class="item type-one text-center">
+                                                {% for feedback in feedbacks %}
+                                                <div class="item type-one {% if forloop.counter == 1 %} text-center {% endif %}">
                                                     <div class="textimonial-image d-flex justify-content-center">
                                                         <i class="icon-testimonial"></i>
                                                     </div>
                                                     <div class="desc-testimonial">
                                                         <div class="testimonial-content">
                                                             <div class="text">
-                                                                <p>"Liquam quis risus viverra, ornare ipsum vitae, congue tellus.
-                                                                    Vestibulum nunc lorem, scelerisque a tristique non, accumsan
-                                                                    ornare eros. Nullam sapien metus, volutpat dictum, accumsan
-                                                                    ornare eros. Nullam sapien metus, volutpat dictum"</p>
+                                                                <p>{{ feedback.feedback }}</p>
                                                             </div>
                                                         </div>
                                                         <div class="testimonial-info">
-                                                            <h5 class="mt-0 box-info">David Jame</h5>
-                                                            <p class="box-dress">DESIGNER</p>
+                                                            <h5 class="mt-0 box-info">{{ feedback.full_name }}</h5>
+                                                            <p class="box-dress">{{ feedback.job }}</p>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="item type-one">
-                                                    <div class="textimonial-image d-flex justify-content-center">
-                                                        <i class="icon-testimonial"></i>
-                                                    </div>
-                                                    <div class="desc-testimonial">
-                                                        <div class="testimonial-content">
-                                                            <div class="text">
-                                                                <p>"Liquam quis risus viverra, ornare ipsum vitae, congue tellus.
-                                                                    Vestibulum nunc lorem, scelerisque a tristique non, accumsan
-                                                                    ornare eros. Nullam sapien metus, volutpat dictum, accumsan
-                                                                    ornare eros. Nullam sapien metus, volutpat dictum"</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="testimonial-info">
-                                                            <h5 class="mt-0 box-info">Max Control</h5>
-                                                            <p class="box-dress">DEVELOPER</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="item type-one">
-                                                    <div class="textimonial-image d-flex justify-content-center">
-                                                        <i class="icon-testimonial"></i>
-                                                    </div>
-                                                    <div class="desc-testimonial">
-                                                        <div class="testimonial-content">
-                                                            <div class="text">
-                                                                <p>"Liquam quis risus viverra, ornare ipsum vitae, congue tellus.
-                                                                    Vestibulum nunc lorem, scelerisque a tristique non, accumsan
-                                                                    ornare eros. Nullam sapien metus, volutpat dictum, accumsan
-                                                                    ornare eros. Nullam sapien metus, volutpat dictum"</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="testimonial-info">
-                                                            <h5 class="mt-0 box-info">John Do</h5>
-                                                            <p class="box-dress">CSS -HTML</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="item type-one">
-                                                    <div class="textimonial-image d-flex justify-content-center">
-                                                        <i class="icon-testimonial"></i>
-                                                    </div>
-                                                    <div class="desc-testimonial">
-                                                        <div class="testimonial-content">
-                                                            <div class="text">
-                                                                <p>"Liquam quis risus viverra, ornare ipsum vitae, congue tellus.
-                                                                    Vestibulum nunc lorem, scelerisque a tristique non, accumsan
-                                                                    ornare eros. Nullam sapien metus, volutpat dictum, accumsan
-                                                                    ornare eros. Nullam sapien metus, volutpat dictum"</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="testimonial-info">
-                                                            <h5 class="mt-0 box-info">Elizabeth Pham</h5>
-                                                            <p class="box-dress">DEVELOPER</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                {% endfor %}
                                             </div>
                                         </div>
                                     </div>

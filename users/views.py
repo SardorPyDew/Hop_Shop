@@ -31,7 +31,7 @@ def send_email_verifivcation(user):
                 'Verification code',
                 f'Verification code for {random_code}',
                 settings.EMAIL_HOST_USER,
-                [user]
+                [user.email]
             )
             return True
         except Exception as e:
@@ -76,7 +76,6 @@ def verify_email(request):
 
             else:
                 messages.error(request, 'This code is invalid')
-
 
         else:
             messages.error(request, form.errors)

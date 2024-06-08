@@ -95,10 +95,18 @@
                                                 {% for color in colors %}
                                                 <div>
                                                     <span class="left">
-                                                        <label style="background-color: {{ color.code }}" class="color-item1"></label>
+                                                        <label style="background-color: {{ color.0.code }}" class="color-item1"></label>
                                                         <a href="#">
-                                                            <span>{{ color.name }}
-                                                                <span>{{color.products.count }}</span>
+                                                            <span>{{ color.0.name }}
+                                                                <span>{{color.0.products.count }}</span>
+                                                            </span>
+                                                        </a>
+                                                    </span>
+                                                    <span class="right">
+                                                        <label style="background-color: {{ color.1.code }}" class="color-item2"></label>
+                                                        <a href="#">
+                                                            <span>{{ color.1.name }}
+                                                                <span>{{color.1.products.count }}</span>
                                                             </span>
                                                         </a>
                                                     </span>
